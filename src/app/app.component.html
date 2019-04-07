@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div style="text-align:center">
+    <br>
+    <img width="100" alt="McDonalds Logo" src="../assets/logo-80.png">
+    <br>
+    <h2>
+      Welcome to {{ title }}!
+    </h2>
+
+  </div>
+
+
+  <div class="row justify-content-md-center" >
+    <div class="col-sm-8 col-sm-offset-2">
+      <br>
+      <form [formGroup]="searchForm" (ngSubmit)="OnSubmit()">
+        <div class="form-group">
+          <input type="text" id="search" class="form-control" formControlName="search" placeholder="AL, AK, ...">
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="searchForm.invalid">Search McDonalds</button>
+      </form>
+     </div>
+  </div>
+  <div class="row justify-content-md-center" *ngIf="mcDonalds.length > 0 && !hide">
+    <div class="col-xs-12">
+      <br>
+      <h4>{{message}} McDonalds's Address :</h4>
+      <div class="list-group">
+        <button class="list-group-item"
+            *ngFor="let mcDonald of mcDonalds;">
+          <p class="list-group-item-heading">
+            {{mcDonald.address}}
+          </p>
+        </button>
+      </div>
+      <br>
+      <button class="btn btn-danger pull-right" (click)="onHide()">
+            <span >Clear</span>
+          </button>
+         
+    </div>
+   <!--
+    <agm-map
+      [latitude]='latitude' [longitude]='longitude' 
+      [zoom]='1'
+    >
+  
+      <agm-marker
+        *ngFor="let mcDonald of mcDonalds;"
+        [latitude]='mcDonald.lat'
+        [longitude]='mcDonald.long'
+        [opacity]='1'
+        
+      >
+      </agm-marker>
+
+    </agm-map>-->
+   
+  </div>
+  <p class="text-danger" *ngIf="mcDonalds.length <= 0">{{message}}</p>
+</div>
+
