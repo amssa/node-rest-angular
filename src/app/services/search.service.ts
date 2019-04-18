@@ -9,9 +9,7 @@ import { HttpClient } from '@angular/common/http';
   address: string
 };*/
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({})
 export class SearchService {
 	
   constructor(private http: HttpClient) { }
